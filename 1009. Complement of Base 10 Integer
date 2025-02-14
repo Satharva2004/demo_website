@@ -1,0 +1,30 @@
+// optimal 
+class Solution {
+    public int bitwiseComplement(int n) {
+        if (n == 0) return 1;
+        int mask = 0;
+        int num = n;
+        while(num!=0)
+        {
+            mask = mask << 1 | 1;
+            num = num >> 1;
+        }
+        return (~n) & mask;
+    }
+}
+
+
+//my solution 
+class Solution {
+    public int bitwiseComplement(int n) {
+        if (n == 0) return 1;
+        String binary = "";
+        while(n!=0){
+            int lastBit = n & 1;
+            int Complement = lastBit==0 ? 1 : 0; 
+            binary = Complement + binary;
+            n = n>>1; 
+        }
+        return Integer.parseInt(binary, 2);
+    }
+}
